@@ -1,0 +1,200 @@
+{
+  "passport_uuid": "e79ea139-4971-482f-b404-a3a687a411ad",
+  "data": [
+    {
+      "id": "str pk",
+      "description": "str",
+      "n": "int",
+      "demographic_factors": {
+        "gender": "str",
+        "sex": "str",
+        "age": "str",
+        "demographic_group": "str",
+        "location": "str",
+        "socio_economics": "str"
+      },
+      "bias_declaration": "str",
+      "catalog": [
+        {
+          "column_name": "str",
+          "description": "str",
+          "type": "category",
+          "number_missing_values": "int",
+          "categories": []
+        }
+      ],
+      "dq_assessment": [
+        {
+          "name": "str",
+          "description": "str",
+          "value": "str",
+          "reference": "http://doi"
+        }
+      ],
+      "clinicians": [
+        "Optional, ids of in-house clinicians"
+      ],
+      "patients": [
+        "Optional, ids of in-house patients"
+      ]
+    }
+  ],
+  "training_algorithm": {
+    "id": "str pk",
+    "name": "str",
+    "description": "str",
+    "reference": "http://url",
+    "implementation_details": {
+      "code": "http://url",
+      "type_of_architecture": "str",
+      "preprocess_steps": [
+        {
+          "name": "str",
+          "description": "str",
+          "reference": "http://url"
+        }
+      ],
+      "hyperparameters": [
+        {
+          "name": "str",
+          "value": "str"
+        }
+      ],
+      "programming_lang": {
+        "name": "str",
+        "version": "str"
+      },
+      "libraries": [
+        {
+          "name": "str",
+          "version": "str"
+        }
+      ]
+    }
+  },
+  "evaluation_strategies": [
+    {
+      "id": "str pk",
+      "roles_and_responsibilities": [
+        {
+          "user_id": "str - IDSs of participants in hospitals DB",
+          "role_user": "str",
+          "responsibilities": "str"
+        }
+      ],
+      "evaluation_type": "categorical: internal | clinical | continual",
+      "measurement_type": "categorical: AI performance | Perceived utility | Perceived usability",
+      "metrics": [
+        {
+          "id": "str",
+          "name": "str",
+          "description": "str",
+          "instrument": "http://url",
+          "reference": "http://doi"
+        }
+      ],
+      "steps": [
+        {
+          "name": "str",
+          "description": "str",
+          "reference": "http://doi",
+          "metrics": ["str fk ids from metrics"]
+        }
+      ],
+      "code": "http://url",
+      "reference": "http://doi"
+    }
+  ],
+
+  "ai_entities": [
+    {
+      "id": "str pk",
+      "manufacturer": "str",
+      "purpose": "str",
+      "release_date": "str:date in yyyy-mm-dd format",
+      "regulation_check": "str",
+      "ethical_declarations": [
+        "str",
+        "str",
+        "..."
+      ],
+      "standards": [
+        "str",
+        "str",
+        "..."
+      ],
+      "certifications": [
+        "str",
+        "str",
+        "..."
+      ],
+      "encryption": "str",
+      "field_tested_libraries": "bool"
+    }
+  ],
+  "SaMD": {
+    "ai_entity": "str fk ai_entities.id",
+    "samd_name": "str",
+    "samd_clinical_purpose": "str",
+    "models": [
+      "list of strs fk to ai_entities.id, if the models are defined in other passports use id@passport_uuid"
+    ]
+  },
+
+  "foundational_model": {
+    "ai_entity": "str fk ai_entities.id",
+    "name": "str",
+    "description": "str",
+    "doi": "http://doi",
+    "reference": "http://url"
+  },
+  "ai_models": [
+    {
+      "ai_entity": "str fk ai_entities.id",
+      "foundational_model": "str fk ai_entities.id (has to be foundational_model)",
+      "xai_mechanism": [
+        {
+          "name": "str",
+          "description": "str",
+          "reference": "http://url"
+        }
+      ],
+      "training": {
+        "training_algorithm": "str fk training_algorithm.id",
+        "training_datasets": [
+          "str fk data.id",
+          "..."
+        ],
+        "quality_roles_and_responsibilities": {
+          "document_id": "str",
+          "document_name": "str",
+          "document_reference": "http://url"
+        },
+        "training_start_date": "str:date in yyyy-mm-dd format",
+        "training_end_date": "str:date in yyyy-mm-dd format"
+      }
+    }
+  ],
+  "evaluations": [
+    {
+      "ai_entity": "str fk ai_entities.pk",
+      "date_start": "str:date in yyyy-mm-dd format",
+      "date_end": "str:date in yyyy-mm-dd format",
+      "description": "str",
+      "evaluation_strategy": "str fk evaluation_strategies.id",
+      "datasets": [
+        "str fk data.id",
+        "..."
+      ],
+      "participants": [
+        "List IDSs of participants in hospitals DB e.g., usability study with nurses"
+      ],
+      "values": [
+        {
+          "id": "str fk evaluation_strategies.metrics.id",
+          "value": "str"
+        }
+      ]
+    }
+  ]
+}

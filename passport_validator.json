@@ -1,0 +1,1046 @@
+{
+  "$defs": {
+    "AIEntity": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "manufacturer": {
+          "title": "Manufacturer",
+          "type": "string"
+        },
+        "purpose": {
+          "title": "Purpose",
+          "type": "string"
+        },
+        "release_date": {
+          "format": "date",
+          "title": "Release Date",
+          "type": "string"
+        },
+        "regulation_check": {
+          "title": "Regulation Check",
+          "type": "string"
+        },
+        "ethical_declarations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Ethical Declarations",
+          "type": "array"
+        },
+        "standards": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Standards",
+          "type": "array"
+        },
+        "certifications": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Certifications",
+          "type": "array"
+        },
+        "encryption": {
+          "title": "Encryption",
+          "type": "string"
+        },
+        "field_tested_libraries": {
+          "title": "Field Tested Libraries",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "manufacturer",
+        "purpose",
+        "release_date",
+        "regulation_check",
+        "ethical_declarations",
+        "standards",
+        "certifications",
+        "encryption",
+        "field_tested_libraries"
+      ],
+      "title": "AIEntity",
+      "type": "object"
+    },
+    "AIModel": {
+      "properties": {
+        "ai_entity": {
+          "title": "Ai Entity",
+          "type": "string"
+        },
+        "foundational_model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Foundational Model"
+        },
+        "xai_mechanism": {
+          "items": {
+            "$ref": "#/$defs/XAI"
+          },
+          "title": "Xai Mechanism",
+          "type": "array"
+        },
+        "training": {
+          "$ref": "#/$defs/Training"
+        }
+      },
+      "required": [
+        "ai_entity",
+        "foundational_model",
+        "xai_mechanism",
+        "training"
+      ],
+      "title": "AIModel",
+      "type": "object"
+    },
+    "CatalogColumn": {
+      "properties": {
+        "column_name": {
+          "title": "Column Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Description"
+        },
+        "type": {
+          "title": "Type",
+          "type": "string"
+        },
+        "number_missing_values": {
+          "title": "Number Missing Values",
+          "type": "integer"
+        },
+        "categories": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Categories"
+        }
+      },
+      "required": [
+        "column_name",
+        "description",
+        "type",
+        "number_missing_values",
+        "categories"
+      ],
+      "title": "CatalogColumn",
+      "type": "object"
+    },
+    "DQMetric": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "value",
+        "reference"
+      ],
+      "title": "DQMetric",
+      "type": "object"
+    },
+    "Data": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "n": {
+          "title": "N",
+          "type": "integer"
+        },
+        "demographic_factors": {
+          "$ref": "#/$defs/DemographicFactors"
+        },
+        "bias_declaration": {
+          "title": "Bias Declaration",
+          "type": "string"
+        },
+        "catalog": {
+          "items": {
+            "$ref": "#/$defs/CatalogColumn"
+          },
+          "title": "Catalog",
+          "type": "array"
+        },
+        "dq_assessment": {
+          "items": {
+            "$ref": "#/$defs/DQMetric"
+          },
+          "title": "Dq Assessment",
+          "type": "array"
+        },
+        "clinicians": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Clinicians"
+        },
+        "patients": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Patients"
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "n",
+        "demographic_factors",
+        "bias_declaration",
+        "catalog",
+        "dq_assessment",
+        "clinicians",
+        "patients"
+      ],
+      "title": "Data",
+      "type": "object"
+    },
+    "DemographicFactors": {
+      "properties": {
+        "gender": {
+          "title": "Gender",
+          "type": "string"
+        },
+        "sex": {
+          "title": "Sex",
+          "type": "string"
+        },
+        "age": {
+          "title": "Age",
+          "type": "string"
+        },
+        "demographic_group": {
+          "title": "Demographic Group",
+          "type": "string"
+        },
+        "location": {
+          "title": "Location",
+          "type": "string"
+        },
+        "socio_economics": {
+          "title": "Socio Economics",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gender",
+        "sex",
+        "age",
+        "demographic_group",
+        "location",
+        "socio_economics"
+      ],
+      "title": "DemographicFactors",
+      "type": "object"
+    },
+    "Evaluation": {
+      "properties": {
+        "ai_entity": {
+          "title": "Ai Entity",
+          "type": "string"
+        },
+        "date_start": {
+          "format": "date",
+          "title": "Date Start",
+          "type": "string"
+        },
+        "date_end": {
+          "format": "date",
+          "title": "Date End",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "evaluation_strategy": {
+          "title": "Evaluation Strategy",
+          "type": "string"
+        },
+        "datasets": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Datasets"
+        },
+        "participants": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Participants"
+        },
+        "values": {
+          "items": {
+            "$ref": "#/$defs/IDValue"
+          },
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "ai_entity",
+        "date_start",
+        "date_end",
+        "description",
+        "evaluation_strategy",
+        "datasets",
+        "participants",
+        "values"
+      ],
+      "title": "Evaluation",
+      "type": "object"
+    },
+    "EvaluationStrategy": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "roles_and_responsibilities": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/RolesAndResponsibilities"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Roles And Responsibilities"
+        },
+        "evaluation_type": {
+          "$ref": "#/$defs/EvaluationTypeEnum"
+        },
+        "measurement_type": {
+          "$ref": "#/$defs/MeasurementTypeEnum"
+        },
+        "metrics": {
+          "items": {
+            "$ref": "#/$defs/Metric"
+          },
+          "title": "Metrics",
+          "type": "array"
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/Step"
+          },
+          "title": "Steps",
+          "type": "array"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Code"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        }
+      },
+      "required": [
+        "id",
+        "roles_and_responsibilities",
+        "evaluation_type",
+        "measurement_type",
+        "metrics",
+        "steps",
+        "code",
+        "reference"
+      ],
+      "title": "EvaluationStrategy",
+      "type": "object"
+    },
+    "EvaluationTypeEnum": {
+      "enum": [
+        "internal",
+        "clinical",
+        "continual"
+      ],
+      "title": "EvaluationTypeEnum",
+      "type": "string"
+    },
+    "ExternalDocument": {
+      "properties": {
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "document_name": {
+          "title": "Document Name",
+          "type": "string"
+        },
+        "document_reference": {
+          "format": "uri",
+          "minLength": 1,
+          "title": "Document Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "document_id",
+        "document_name",
+        "document_reference"
+      ],
+      "title": "ExternalDocument",
+      "type": "object"
+    },
+    "FoundationalModel": {
+      "properties": {
+        "ai_entity": {
+          "title": "Ai Entity",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "doi": {
+          "format": "uri",
+          "minLength": 1,
+          "title": "Doi",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ai_entity",
+        "name",
+        "description",
+        "doi"
+      ],
+      "title": "FoundationalModel",
+      "type": "object"
+    },
+    "IDValue": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "value"
+      ],
+      "title": "IDValue",
+      "type": "object"
+    },
+    "ImplementationDetails": {
+      "properties": {
+        "code": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Code"
+        },
+        "type_of_architecture": {
+          "title": "Type Of Architecture",
+          "type": "string"
+        },
+        "preprocess_steps": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/PreprocessSteps"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Preprocess Steps"
+        },
+        "hyperparameters": {
+          "items": {
+            "$ref": "#/$defs/NameValue"
+          },
+          "title": "Hyperparameters",
+          "type": "array"
+        },
+        "programming_lang": {
+          "$ref": "#/$defs/NameVersion"
+        }
+      },
+      "required": [
+        "code",
+        "type_of_architecture",
+        "preprocess_steps",
+        "hyperparameters",
+        "programming_lang"
+      ],
+      "title": "ImplementationDetails",
+      "type": "object"
+    },
+    "MeasurementTypeEnum": {
+      "enum": [
+        "AI Performance",
+        "Perceived Utility",
+        "Perceived Usability"
+      ],
+      "title": "MeasurementTypeEnum",
+      "type": "string"
+    },
+    "Metric": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "instrument": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Instrument"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "instrument",
+        "reference"
+      ],
+      "title": "Metric",
+      "type": "object"
+    },
+    "NameValue": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "value": {
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "title": "NameValue",
+      "type": "object"
+    },
+    "NameVersion": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "title": "NameVersion",
+      "type": "object"
+    },
+    "PreprocessSteps": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "reference": {
+          "format": "uri",
+          "minLength": 1,
+          "title": "Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "reference"
+      ],
+      "title": "PreprocessSteps",
+      "type": "object"
+    },
+    "RolesAndResponsibilities": {
+      "properties": {
+        "user_id": {
+          "title": "User Id",
+          "type": "string"
+        },
+        "role_user": {
+          "title": "Role User",
+          "type": "string"
+        },
+        "responsibilities": {
+          "title": "Responsibilities",
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id",
+        "role_user",
+        "responsibilities"
+      ],
+      "title": "RolesAndResponsibilities",
+      "type": "object"
+    },
+    "SaMD": {
+      "properties": {
+        "ai_entity": {
+          "title": "Ai Entity",
+          "type": "string"
+        },
+        "samd_name": {
+          "title": "Samd Name",
+          "type": "string"
+        },
+        "samd_clinical_purpose": {
+          "title": "Samd Clinical Purpose",
+          "type": "string"
+        },
+        "models": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Models",
+          "type": "array"
+        }
+      },
+      "required": [
+        "ai_entity",
+        "samd_name",
+        "samd_clinical_purpose",
+        "models"
+      ],
+      "title": "SaMD",
+      "type": "object"
+    },
+    "Step": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "metrics": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Metrics"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "reference",
+        "metrics"
+      ],
+      "title": "Step",
+      "type": "object"
+    },
+    "Training": {
+      "properties": {
+        "training_algorithm": {
+          "title": "Training Algorithm",
+          "type": "string"
+        },
+        "training_datasets": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Training Datasets",
+          "type": "array"
+        },
+        "quality_roles_and_responsibilities": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExternalDocument"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "training_start_date": {
+          "format": "date",
+          "title": "Training Start Date",
+          "type": "string"
+        },
+        "training_end_date": {
+          "format": "date",
+          "title": "Training End Date",
+          "type": "string"
+        }
+      },
+      "required": [
+        "training_algorithm",
+        "training_datasets",
+        "quality_roles_and_responsibilities",
+        "training_start_date",
+        "training_end_date"
+      ],
+      "title": "Training",
+      "type": "object"
+    },
+    "TrainingAlgorithm": {
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
+        },
+        "implementation_details": {
+          "$ref": "#/$defs/ImplementationDetails"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "reference",
+        "implementation_details"
+      ],
+      "title": "TrainingAlgorithm",
+      "type": "object"
+    },
+    "XAI": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "reference": {
+          "format": "uri",
+          "minLength": 1,
+          "title": "Reference",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "reference"
+      ],
+      "title": "XAI",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "passport_uuid": {
+      "format": "uuid4",
+      "title": "Passport Uuid",
+      "type": "string"
+    },
+    "data": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Data"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Data"
+    },
+    "training_algorithm": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/TrainingAlgorithm"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evaluation_strategies": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/EvaluationStrategy"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Evaluation Strategies"
+    },
+    "ai_entities": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AIEntity"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Ai Entities"
+    },
+    "SaMD": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SaMD"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "foundational_model": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/FoundationalModel"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ai_models": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/AIModel"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Ai Models"
+    },
+    "evaluations": {
+      "items": {
+        "$ref": "#/$defs/Evaluation"
+      },
+      "title": "Evaluations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "passport_uuid",
+    "data",
+    "training_algorithm",
+    "evaluation_strategies",
+    "ai_entities",
+    "SaMD",
+    "foundational_model",
+    "ai_models",
+    "evaluations"
+  ],
+  "title": "AIPassport",
+  "type": "object"
+}

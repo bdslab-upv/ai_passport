@@ -1,0 +1,116 @@
+{
+  "passport_uuid": "fdd14c91-f550-45df-bb9e-1e97f940f524",
+  "data": null,
+  "training_algorithm": null,
+  "evaluation_strategies": [
+    {
+      "id": "1",
+      "roles_and_responsibilities": [
+        {
+          "user_id": "u11",
+          "role_user": "Researcher",
+          "responsibilities": "Main interviewer"
+        },
+        {
+          "user_id": "u74",
+          "role_user": "Researcher",
+          "responsibilities": "Data collector"
+        }
+      ],
+      "evaluation_type": "internal",
+      "measurement_type": "Perceived Usability",
+
+      "metrics": [
+        {
+          "id": "m1",
+          "name": "Usability",
+          "description": "Measures how easy to use and friend to the user the program is",
+          "instrument": "https://www.usability.gov/how-to-and-tools/methods/system-usability-scale.html",
+          "reference": "https://dx.doi.org/10.9781/ijimai.2017.09.001"
+        },
+        {
+          "id": "m2",
+          "name": "User Experience",
+          "description": "Measures the subjective experience of the user with the program",
+          "instrument": "https://www.ueq-online.org/",
+          "reference": "https://dx.doi.org/10.1080/10447318.2018.1455307"
+        }
+      ],
+      "steps": [],
+      "code": null,
+      "reference": null
+    }
+  ],
+  "ai_entities": [
+    {
+      "id": "4",
+      "purpose": "Detect which older patients may benefit from palliative care at hospital admission based on mortality and frailty by the use of 3 predictive models",
+      "manufacturer": "Biomedical Science Lab",
+      "release_date": "2023-01-10",
+      "regulation_check": "This SaMD has not been certified for the use in clinical practice",
+      "ethical_declarations": [
+        "The study in which this software was developed was approved by the Ethical Committee of the University and Polytechnic La Fe Hospital of Valencia (registration number: 2019-88-1"
+      ],
+      "standards": [],
+      "certifications": [],
+      "encryption": "This software uses statical models and no input data is recorded. Passwords from user information is encrypted using the hashing technology of the Django framework",
+      "field_tested_libraries": true
+    }
+  ],
+  "SaMD": {
+    "ai_entity": "4",
+    "samd_name": "Palliative Cara Inclusion models",
+    "samd_clinical_purpose": "Predictive models yo help decide if an older hospital in-patient may need PC",
+    "models": [
+      "1@2423730b-911f-4c70-9462-e6ffbc1a3bd4",
+      "2@14b0b216-7140-4caa-a3fa-5cc3a3128bc9",
+      "3@2ae4890b-ebb2-4e46-8b35-6b71d0e72b94"
+    ]
+  },
+
+  "foundational_model": null,
+  "ai_models": null,
+
+  "evaluations": [
+    {
+      "ai_entity": "4",
+      "date_start": "2022-02-01",
+      "date_end": "2022-06-01",
+      "description": "Usability and user experience validation of the software with stakeholders",
+      "evaluation_strategy": "1",
+      "datasets": [],
+      "participants": [
+        "phys1",
+        "phys2",
+        "phys3",
+        "phys4",
+        "phys5",
+        "phys6",
+        "phys7",
+        "phys8",
+        "phys9",
+        "phys10",
+        "phys12",
+        "phys13",
+        "phys14",
+        "phys15",
+        "nur1",
+        "nur2",
+        "nur3",
+        "nur4",
+        "nur5",
+        "nur6"
+      ],
+      "values": [
+        {
+          "id": "m1",
+          "value": "65"
+        },
+        {
+          "id": "m2",
+          "value": "1.3"
+        }
+      ]
+    }
+  ]
+}
