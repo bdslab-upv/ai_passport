@@ -1,5 +1,5 @@
 {
-  "passport_uuid": "2423730b-911f-4c70-9462-e6ffbc1a3bd4",
+  "ai_entity_passport_uuid": "2423730b-911f-4c70-9462-e6ffbc1a3bd4",
   "data": [
     {
       "id": "1",
@@ -11,7 +11,7 @@
         "age": "Mean: 79.11; std: 8.62",
         "demographic_group": "Adults with 65 years or older",
         "location": "Hospital La Fe. Valencia. Comunidad Valenciana. Spain",
-        "socio_economics": "No information regarding socio-economics was recorded"
+        "socioeconomics": "No information regarding socioeconomics was recorded"
       },
       "bias_declaration": "Patients data was recorded on only one hospital, therefore it may exist differences it ethnicity and a possible over-representation of spanish population ",
       "catalog": [
@@ -2249,7 +2249,7 @@
           "categories": null
         }
       ],
-      "dq_assessment": [
+      "data_quality_assessment": [
         {
           "name": "consistency",
           "description": "Data is considered consistent if two or more values in different locations are identical",
@@ -2360,7 +2360,7 @@
       "reference": "https://dx.doi.org/10.1177/14604582221092592"
     }
   ],
-  "ai_entities": [
+  "composition_ai_entities": [
     {
       "id": "1",
       "purpose": "Detect which patient may die before one year after hospital admission. The model outputs probability of dying within the year",
@@ -2418,7 +2418,8 @@
           "id": "m2",
           "value": "0.79"
         }
-      ]
+      ],
+      "reference": "https://doi.org/10.1177/14604582221092592"
     }
   ]
 }

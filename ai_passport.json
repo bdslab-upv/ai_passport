@@ -1,5 +1,5 @@
 {
-  "passport_uuid": "e79ea139-4971-482f-b404-a3a687a411ad",
+  "ai_entity_passport_uuid": "e79ea139-4971-482f-b404-a3a687a411ad",
   "data": [
     {
       "id": "str pk",
@@ -11,7 +11,7 @@
         "age": "str",
         "demographic_group": "str",
         "location": "str",
-        "socio_economics": "str"
+        "socioeconomics": "str"
       },
       "bias_declaration": "str",
       "catalog": [
@@ -23,7 +23,7 @@
           "categories": []
         }
       ],
-      "dq_assessment": [
+      "data_quality_assessment": [
         {
           "name": "str",
           "description": "str",
@@ -106,7 +106,7 @@
     }
   ],
 
-  "ai_entities": [
+  "composition_ai_entities": [
     {
       "id": "str pk",
       "manufacturer": "str",
@@ -194,7 +194,8 @@
           "id": "str fk evaluation_strategies.metrics.id",
           "value": "str"
         }
-      ]
+      ],
+      "reference": "http://url"
     }
   ]
 }

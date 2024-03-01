@@ -220,11 +220,11 @@
           "title": "Catalog",
           "type": "array"
         },
-        "dq_assessment": {
+        "data_quality_assessment": {
           "items": {
             "$ref": "#/$defs/DQMetric"
           },
-          "title": "Dq Assessment",
+          "title": "Data Quality Assessment",
           "type": "array"
         },
         "clinicians": {
@@ -263,7 +263,7 @@
         "demographic_factors",
         "bias_declaration",
         "catalog",
-        "dq_assessment",
+        "data_quality_assessment",
         "clinicians",
         "patients"
       ],
@@ -292,8 +292,8 @@
           "title": "Location",
           "type": "string"
         },
-        "socio_economics": {
-          "title": "Socio Economics",
+        "socioeconomics": {
+          "title": "Socioeconomics",
           "type": "string"
         }
       },
@@ -303,7 +303,7 @@
         "age",
         "demographic_group",
         "location",
-        "socio_economics"
+        "socioeconomics"
       ],
       "title": "DemographicFactors",
       "type": "object"
@@ -366,6 +366,19 @@
           },
           "title": "Values",
           "type": "array"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "format": "uri",
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference"
         }
       },
       "required": [
@@ -376,7 +389,8 @@
         "evaluation_strategy",
         "datasets",
         "participants",
-        "values"
+        "values",
+        "reference"
       ],
       "title": "Evaluation",
       "type": "object"
@@ -931,9 +945,9 @@
     }
   },
   "properties": {
-    "passport_uuid": {
+    "ai_entity_passport_uuid": {
       "format": "uuid4",
-      "title": "Passport Uuid",
+      "title": "Ai Entity Passport Uuid",
       "type": "string"
     },
     "data": {
@@ -974,7 +988,7 @@
       ],
       "title": "Evaluation Strategies"
     },
-    "ai_entities": {
+    "composition_ai_entities": {
       "anyOf": [
         {
           "items": {
@@ -986,7 +1000,7 @@
           "type": "null"
         }
       ],
-      "title": "Ai Entities"
+      "title": "Composition Ai Entities"
     },
     "SaMD": {
       "anyOf": [
@@ -1031,11 +1045,11 @@
     }
   },
   "required": [
-    "passport_uuid",
+    "ai_entity_passport_uuid",
     "data",
     "training_algorithm",
     "evaluation_strategies",
-    "ai_entities",
+    "composition_ai_entities",
     "SaMD",
     "foundational_model",
     "ai_models",

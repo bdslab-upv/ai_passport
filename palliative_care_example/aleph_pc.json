@@ -1,5 +1,5 @@
 {
-  "passport_uuid": "fdd14c91-f550-45df-bb9e-1e97f940f524",
+  "ai_entity_passport_uuid": "fdd14c91-f550-45df-bb9e-1e97f940f524",
   "data": null,
   "training_algorithm": null,
   "evaluation_strategies": [
@@ -41,7 +41,7 @@
       "reference": null
     }
   ],
-  "ai_entities": [
+  "composition_ai_entities": [
     {
       "id": "4",
       "purpose": "Detect which older patients may benefit from palliative care at hospital admission based on mortality and frailty by the use of 3 predictive models",
@@ -110,7 +110,8 @@
           "id": "m2",
           "value": "1.3"
         }
-      ]
+      ],
+      "reference": "https://doi.org/10.1177/20552076221150735"
     }
   ]
 }
